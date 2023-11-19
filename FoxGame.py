@@ -51,7 +51,6 @@ class Game():
                         valid_squares.append(valid_square)
                         if valid_square[0] == check_row and valid_square[1] == check_col:
                             break
-                print(valid_squares)
                 for i in range(len(moves) - 1, -1, -1):
                     if moves[i].piece != 'K':
                         if not (moves[i].end_row, moves[i].end_col) in valid_squares:
@@ -60,16 +59,12 @@ class Game():
                 self.get_King_Moves(king_row, king_col, moves)
         else:
             moves = self.get_all_moves()
-        #print(moves[0].start_row, moves[0].start_col, moves[0].end_row, moves[0].end_col, moves[0].piece)
         if len(moves) == 0:
             if self.inCheck == True:
                 self.checkmate = True
             else:
                 self.stalemate = True
         else:
-            for i in range(len(moves)):
-                print(moves[i].start_row, moves[i].start_col, moves[i].end_row, moves[i].end_col, moves[i].piece)
-                print(self.inCheck)
             self.checkmate = False
             self.stalemate = False
         return moves
@@ -297,7 +292,6 @@ class Game():
             for j in range(8):
                 if self.board[i][j] == '--':
                     moves.append(Move((r,c), (i,j), self.board))
-        #print("hello")
 
 class Move:
     def __init__(self, start_square, end_square, board):
